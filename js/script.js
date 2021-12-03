@@ -19,8 +19,9 @@ console.log (age)
 
 
 let tariffa = 0.21;
-let prezzo = 100 * 0.21;
+let prezzo = km * 0.21;
 
+prezzo = prezzo.toFixed(2);
 
 console.log (prezzo)
 
@@ -31,9 +32,16 @@ console.log (prezzo)
 
 
 if (age < 18) {
-    outputHtml.innerHTML += `<br/> sconto 20% i minorenni`
+    console.log("prezzo non scontato: " + prezzo);
+    prezzo = prezzo - ((prezzo/100)*20);
+    console.log("prezzo scontato20%: " + prezzo);
+    outputHtml.innerHTML += `<br/> sconto 20% i minorenni, il prezzo è ${prezzo}`;
+
+    
 } else if (age > 65) {
-    outputHtml.innerHTML += `<br/> sconto 40% per gli over 65`
+    prezzo = prezzo - ((prezzo/100)*40)
+    console.log("prezzo scontato40%: " + prezzo);
+    outputHtml.innerHTML += `<br/> sconto 40% per gli over 65, il prezzo è: ${prezzo}`
 } else {
-    outputHtml.innerHTML += `<br/> prezzo intero`
+    outputHtml.innerHTML += `<br/> prezzo intero, prezzo: ${prezzo}`
 }
