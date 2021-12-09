@@ -3,7 +3,7 @@ let outputHtml = document.getElementById('treno');
 
 // chiediamo quqnti km vuole perdorrere 
 
-let km = prompt("che numero di km vuoi percorrere")
+let km = parseInt(prompt("che numero di km vuoi percorrere"))
 
 // chiediamo età
 
@@ -26,22 +26,31 @@ prezzo = prezzo.toFixed(2);
 console.log (prezzo)
 
 
+const boxElement = document.getElementById('treno');
+const button = document.getElementById('button-box');
+
+
+
+
 // va applicato uno sconto del 20% per i minorenni
 // va applicato uno sconto del 40% per gli over 65.
 
+button.addEventListener('click', function () {
 
-
-if (age < 18) {
-    console.log("prezzo non scontato: " + prezzo);
-    prezzo = prezzo - ((prezzo/100)*20);
-    console.log("prezzo scontato20%: " + prezzo);
-    outputHtml.innerHTML += `<br/> sconto 20% i minorenni, il prezzo è ${prezzo}`;
-
+    if (age < 18) {
+        console.log("prezzo non scontato: " + prezzo);
+        prezzo = prezzo - ((prezzo/100)*20);
+        console.log("prezzo scontato20%: " + prezzo);
+        outputHtml.innerHTML += `<br/> sconto 20% i minorenni, il prezzo è ${prezzo}`;
     
-} else if (age > 65) {
-    prezzo = prezzo - ((prezzo/100)*40)
-    console.log("prezzo scontato40%: " + prezzo);
-    outputHtml.innerHTML += `<br/> sconto 40% per gli over 65, il prezzo è: ${prezzo}`
-} else {
-    outputHtml.innerHTML += `<br/> prezzo intero, prezzo: ${prezzo}`
-}
+        
+    } else if (age > 65) {
+        prezzo = prezzo - ((prezzo/100)*40)
+        console.log("prezzo scontato40%: " + prezzo);
+        outputHtml.innerHTML += `<br/> sconto 40% per gli over 65, il prezzo è: ${prezzo}`
+    } else {
+        outputHtml.innerHTML += `<br/> prezzo intero, prezzo: ${prezzo}`
+    }
+
+})
+
